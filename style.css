@@ -45,7 +45,8 @@ body::after {
 /* CURSED MODE STYLES */
 body.cursed-mode {
     background: #000000 !important;
-    color: #b8860b !important;
+    color: #8b8b6b !important;
+    font-family: 'Creepster', cursive !important;
 }
 
 body.cursed-mode::before,
@@ -55,38 +56,43 @@ body.cursed-mode::after {
 
 body.cursed-mode .navbar {
     background: #000000 !important;
-    border-bottom-color: #b8860b !important;
+    border-bottom-color: #8b8b6b !important;
 }
 
 body.cursed-mode .logo {
-    color: #b8860b !important;
+    color: #8b8b6b !important;
+    font-family: 'Creepster', cursive !important;
 }
 
 body.cursed-mode .nav-links a {
-    color: #b8860b !important;
+    color: #8b8b6b !important;
+    font-family: 'Creepster', cursive !important;
 }
 
 body.cursed-mode .nav-links a:hover {
-    color: #b8860b !important;
+    color: #8b8b6b !important;
 }
 
 body.cursed-mode .hero {
     background: #000000 !important;
-    color: #b8860b !important;
+    color: #8b8b6b !important;
 }
 
 body.cursed-mode .hero-content h1 {
-    color: #b8860b !important;
+    color: #8b8b6b !important;
+    font-family: 'Creepster', cursive !important;
 }
 
 body.cursed-mode .hero-content p {
-    color: #b8860b !important;
+    color: #8b8b6b !important;
+    font-family: 'Creepster', cursive !important;
 }
 
 body.cursed-mode .about h2,
 body.cursed-mode .interests h2,
 body.cursed-mode .projects h2 {
-    color: #b8860b !important;
+    color: #8b8b6b !important;
+    font-family: 'Creepster', cursive !important;
 }
 
 body.cursed-mode .about-content p,
@@ -97,14 +103,16 @@ body.cursed-mode .interest-card p,
 body.cursed-mode .project-card,
 body.cursed-mode .project-card p {
     background: #000000 !important;
-    color: #b8860b !important;
-    border-color: #b8860b !important;
+    color: #8b8b6b !important;
+    border-color: #8b8b6b !important;
+    font-family: 'Creepster', cursive !important;
 }
 
 body.cursed-mode .about-card h3,
 body.cursed-mode .interest-card h3,
 body.cursed-mode .project-card h3 {
-    color: #b8860b !important;
+    color: #8b8b6b !important;
+    font-family: 'Creepster', cursive !important;
 }
 
 body.cursed-mode .about-card::before,
@@ -115,30 +123,55 @@ body.cursed-mode .project-card::before {
 
 body.cursed-mode .footer {
     background: #000000 !important;
-    color: #b8860b !important;
-    border-top-color: #b8860b !important;
+    color: #8b8b6b !important;
+    border-top-color: #8b8b6b !important;
 }
 
 body.cursed-mode .footer a {
-    color: #b8860b !important;
+    color: #8b8b6b !important;
+    font-family: 'Creepster', cursive !important;
 }
 
 body.cursed-mode .footer a:hover {
-    color: #b8860b !important;
+    color: #8b8b6b !important;
 }
 
-/* FADE FLICKER ANIMATION */
-@keyframes fadeFlicker {
+/* RAPID FADE FLICKER ANIMATION - like dying battery */
+@keyframes rapidFadeFlicker {
     0%, 100% {
         opacity: 1;
     }
+    10% {
+        opacity: 0.3;
+    }
+    20% {
+        opacity: 1;
+    }
+    30% {
+        opacity: 0.2;
+    }
+    40% {
+        opacity: 1;
+    }
     50% {
-        opacity: 0.15;
+        opacity: 0.25;
+    }
+    60% {
+        opacity: 0.9;
+    }
+    70% {
+        opacity: 0.1;
+    }
+    80% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 0.4;
     }
 }
 
 body.fading-flicker {
-    animation: fadeFlicker 2s ease-in-out;
+    animation: rapidFadeFlicker 0.8s ease-in-out;
 }
 
 /* NAVIGATION BAR */

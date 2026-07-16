@@ -71,17 +71,17 @@ window.addEventListener('scroll', () => {
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
         if (!curseDetected) {
             curseDetected = true;
-            console.log('%c⚠️ THE CURSE HAS BEEN AWAKENED...', 'color: #b8860b; font-size: 16px; font-weight: bold;');
+            console.log('%cTHE CURSE HAS BEEN AWAKENED...', 'color: #8b8b6b; font-size: 16px; font-weight: bold;');
             
             // Start flickering after 20 seconds
             setTimeout(() => {
-                startFadeFlickering();
+                startRapidFadeFlickering();
             }, 20000);
         }
     }
 });
 
-function startFadeFlickering() {
+function startRapidFadeFlickering() {
     document.body.classList.add('fading-flicker');
     
     // Flicker for 3 seconds
@@ -100,25 +100,25 @@ function activateCursedMode() {
         heroText.textContent = 'This is a totally normal website.';
     }
     
-    console.log('%cTHIS IS A TOTALLY NORMAL WEBSITE', 'color: #b8860b; font-size: 18px; font-weight: bold;');
-    console.log('%cYou have entered the cursed realm...', 'color: #b8860b; font-size: 14px;');
+    console.log('%cTHIS IS A TOTALLY NORMAL WEBSITE', 'color: #8b8b6b; font-size: 18px; font-weight: bold;');
+    console.log('%cYou have entered the cursed realm...', 'color: #8b8b6b; font-size: 14px;');
     
-    // Start continuous fade flicker every 5-10 seconds
-    startContinuousFadeFlicker();
+    // Start continuous rapid fade flicker every 3-7 seconds
+    startContinuousRapidFadeFlicker();
 }
 
-function startContinuousFadeFlicker() {
+function startContinuousRapidFadeFlicker() {
     setInterval(() => {
-        // Random delay between 5-10 seconds
-        const delay = Math.random() * 5000 + 5000;
+        // Random delay between 3-7 seconds
+        const delay = Math.random() * 4000 + 3000;
         
         setTimeout(() => {
             document.body.classList.add('fading-flicker');
             
-            // Remove flicker class after animation completes
+            // Remove flicker class after animation completes (0.8s animation)
             setTimeout(() => {
                 document.body.classList.remove('fading-flicker');
-            }, 2000);
+            }, 800);
         }, delay);
-    }, 7000); // Run this check every 7 seconds
+    }, 5000); // Run this check every 5 seconds
 }

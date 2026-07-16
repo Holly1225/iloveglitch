@@ -46,7 +46,6 @@ window.addEventListener('scroll', () => {
     
     document.querySelectorAll('section').forEach(section => {
         const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
         if (scrollY >= sectionTop - 200) {
             current = section.getAttribute('id');
         }
@@ -69,7 +68,6 @@ let audioContext = null;
 let oscillator = null;
 
 window.addEventListener('scroll', () => {
-    // Check if user has scrolled to the bottom
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
         if (!curseDetected) {
             curseDetected = true;
@@ -96,19 +94,16 @@ function playCreepySound() {
             audioContext.resume();
         }
         
-        // Create creepy low-frequency whisper-like sound
         oscillator = audioContext.createOscillator();
         const gainNode = audioContext.createGain();
         
         oscillator.connect(gainNode);
         gainNode.connect(audioContext.destination);
         
-        // Creepy frequencies (very low)
         oscillator.frequency.setValueAtTime(30, audioContext.currentTime);
         oscillator.frequency.exponentialRampToValueAtTime(50, audioContext.currentTime + 2);
         oscillator.frequency.exponentialRampToValueAtTime(25, audioContext.currentTime + 4);
         
-        // Volume envelope
         gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
         gainNode.gain.exponentialRampToValueAtTime(0.05, audioContext.currentTime + 4);
         
@@ -125,10 +120,8 @@ function startUltraRapidFlickering() {
     
     document.body.classList.add('ultra-fading-flicker');
     
-    // Flicker for 2 seconds (very intense)
     setTimeout(() => {
         document.body.classList.remove('ultra-fading-flicker');
-        // Repeat flicker multiple times
         for (let i = 0; i < 3; i++) {
             setTimeout(() => {
                 document.body.classList.add('ultra-fading-flicker');
@@ -138,7 +131,6 @@ function startUltraRapidFlickering() {
             }, i * 800);
         }
         
-        // After intense flicker sequence, activate cursed mode
         setTimeout(() => {
             activateCursedMode();
         }, 3500);
@@ -148,41 +140,36 @@ function startUltraRapidFlickering() {
 function activateCursedMode() {
     document.body.classList.add('cursed-mode');
     
-    // Change all text to creepy messages
     const heroText = document.querySelector('.hero-text');
     if (heroText) {
-        heroText.textContent = 'W H Y   D I D   Y O U   C O M E   H E R E ?';
+        heroText.textContent = 'Fun Stuff :D';
     }
     
     const heroTitle = document.querySelector('.hero-content h1');
     if (heroTitle) {
-        heroTitle.textContent = 'Y O U   S H O U L D   N O T   B E   H E R E';
+        heroTitle.textContent = 'Hello again!';
     }
     
-    // Change section titles
     const sectionTitles = document.querySelectorAll('.about h2, .interests h2, .projects h2');
     sectionTitles.forEach((title, index) => {
         const messages = [
-            'T H E Y   A R E   W A T C H I N G',
-            'Y O U   C A N N O T   E S C A P E',
-            'G O   B A C K'
+            'About Me',
+            'My Interests',
+            'My Projects'
         ];
-        title.textContent = messages[index] || 'H E L P';
+        title.textContent = messages[index] || title.textContent;
     });
     
     console.log('%cYOU HAVE ENTERED THE CURSED REALM', 'color: #8b0000; font-size: 18px; font-weight: bold;');
     console.log('%cThey are watching...', 'color: #8b0000; font-size: 14px;');
     console.log('%cTurn back while you still can...', 'color: #8b0000; font-size: 14px;');
     
-    // Play more creepy sounds at intervals
     setInterval(() => {
         playCreepySound();
     }, 4000);
     
-    // Start continuous flickering
     startContinuousUltraRapidFlicker();
     
-    // Add disorienting screen shake
     setInterval(() => {
         const intensity = Math.random() * 2;
         document.body.style.transform = `translate(${intensity}px, ${intensity}px)`;
@@ -194,7 +181,6 @@ function activateCursedMode() {
 
 function startContinuousUltraRapidFlicker() {
     setInterval(() => {
-        // Random flicker at intervals
         if (Math.random() > 0.7) {
             document.body.classList.add('ultra-fading-flicker');
             setTimeout(() => {

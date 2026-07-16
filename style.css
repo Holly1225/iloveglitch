@@ -91,24 +91,29 @@ body::after {
 .hero {
     background: linear-gradient(135deg, #fdd7e4 0%, #e9d5ff 50%, #dbeafe 100%);
     color: #7c6b8d;
-    padding: 4rem 2rem;
+    padding: 6rem 2rem;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 50vh;
 }
 
 .hero-content h1 {
     font-size: 3.2rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     font-weight: 700;
     color: #d87093;
+    letter-spacing: -0.5px;
 }
 
 .hero-content p {
-    font-size: 1.4rem;
-    font-weight: 300;
+    font-size: 1.3rem;
+    font-weight: 400;
     color: #b78dd9;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
 }
 
 /* ABOUT ME SECTION */
@@ -418,6 +423,11 @@ body::after {
 
     .nav-links a {
         font-size: 1rem;
+    }
+
+    .hero {
+        padding: 4rem 2rem;
+        min-height: auto;
     }
 
     .hero-content h1 {

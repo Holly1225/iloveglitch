@@ -62,3 +62,44 @@ window.addEventListener('scroll', () => {
         }
     });
 });
+
+// CURSED MODE - Trigger when user scrolls to bottom
+let curseDetected = false;
+
+window.addEventListener('scroll', () => {
+    // Check if user has scrolled to the bottom
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
+        if (!curseDetected) {
+            curseDetected = true;
+            console.log('%c⚠️ THE CURSE HAS BEEN AWAKENED...', 'color: #ffff00; font-size: 16px; font-weight: bold;');
+            
+            // Start flickering after 20 seconds
+            setTimeout(() => {
+                startFlickering();
+            }, 20000);
+        }
+    }
+});
+
+function startFlickering() {
+    document.body.classList.add('flickering');
+    
+    // Flicker for 3 seconds
+    setTimeout(() => {
+        document.body.classList.remove('flickering');
+        activateCursedMode();
+    }, 3000);
+}
+
+function activateCursedMode() {
+    document.body.classList.add('cursed-mode');
+    
+    // Change the hero text to cursed version
+    const heroText = document.querySelector('.hero-text');
+    if (heroText) {
+        heroText.textContent = 'This is a totally normal website.';
+    }
+    
+    console.log('%c👁️ THIS IS A TOTALLY NORMAL WEBSITE 👁️', 'color: #ffff00; font-size: 18px; font-weight: bold;');
+    console.log('%cYou have entered the cursed realm...', 'color: #ffff00; font-size: 14px;');
+}

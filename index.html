@@ -11,6 +11,104 @@
             background-color: #f9c2e6;
             color: #6b5a7d;
         }
+        
+        /* Cursed mode styles */
+        body.cursed-mode {
+            background: #000000 !important;
+            color: #ffff00 !important;
+        }
+        
+        body.cursed-mode::before,
+        body.cursed-mode::after {
+            display: none !important;
+        }
+        
+        body.cursed-mode .navbar {
+            background: #000000 !important;
+            border-bottom-color: #ffff00 !important;
+        }
+        
+        body.cursed-mode .logo {
+            color: #ffff00 !important;
+        }
+        
+        body.cursed-mode .nav-links a {
+            color: #ffff00 !important;
+        }
+        
+        body.cursed-mode .nav-links a:hover {
+            color: #ffff00 !important;
+        }
+        
+        body.cursed-mode .hero {
+            background: #000000 !important;
+            color: #ffff00 !important;
+        }
+        
+        body.cursed-mode .hero-content h1 {
+            color: #ffff00 !important;
+        }
+        
+        body.cursed-mode .hero-content p {
+            color: #ffff00 !important;
+        }
+        
+        body.cursed-mode .about h2,
+        body.cursed-mode .interests h2,
+        body.cursed-mode .projects h2 {
+            color: #ffff00 !important;
+        }
+        
+        body.cursed-mode .about-content p,
+        body.cursed-mode .about-card,
+        body.cursed-mode .about-card p,
+        body.cursed-mode .interest-card,
+        body.cursed-mode .interest-card p,
+        body.cursed-mode .project-card,
+        body.cursed-mode .project-card p {
+            background: #000000 !important;
+            color: #ffff00 !important;
+            border-color: #ffff00 !important;
+        }
+        
+        body.cursed-mode .about-card h3,
+        body.cursed-mode .interest-card h3,
+        body.cursed-mode .project-card h3 {
+            color: #ffff00 !important;
+        }
+        
+        body.cursed-mode .about-card::before,
+        body.cursed-mode .interest-card::before,
+        body.cursed-mode .project-card::before {
+            display: none !important;
+        }
+        
+        body.cursed-mode .footer {
+            background: #000000 !important;
+            color: #ffff00 !important;
+            border-top-color: #ffff00 !important;
+        }
+        
+        body.cursed-mode .footer a {
+            color: #ffff00 !important;
+        }
+        
+        body.cursed-mode .footer a:hover {
+            color: #ffff00 !important;
+        }
+        
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 54%, 56%, 100% {
+                opacity: 1;
+            }
+            19%, 24%, 55% {
+                opacity: 0;
+            }
+        }
+        
+        body.flickering {
+            animation: flicker 0.3s infinite;
+        }
     </style>
 </head>
 <body>
@@ -31,7 +129,7 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Hey there. I'm Holly. 💜</h1>
-            <p>Website about me and other fun stuff haha yeah :D</p>
+            <p class="hero-text">Website about me and other fun stuff haha yeah :D</p>
         </div>
     </section>
 

@@ -13,9 +13,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // WELCOME MESSAGE in console (just for fun!)
-console.log('%cWelcome to Holly\'s Website!', 'color: #667eea; font-size: 20px; font-weight: bold;');
-console.log('%cIf you\'re reading this, you\'re cool! 😎', 'color: #764ba2; font-size: 14px;');
-console.log('%cCheeck out my GitHub: github.com/Holly1225/iloveglitch', 'color: #333; font-size: 12px;');
+console.log('%cWelcome to Holly\'s Website!', 'color: #d87093; font-size: 20px; font-weight: bold;');
+console.log('%cIf you\'re reading this, you\'re cool! 😎', 'color: #b78dd9; font-size: 14px;');
+console.log('%cCheck out my GitHub: github.com/Holly1225/iloveglitch', 'color: #7c6b8d; font-size: 12px;');
 
 // ADD ANIMATION when sections come into view
 const observerOptions = {

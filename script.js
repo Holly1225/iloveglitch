@@ -65,60 +65,141 @@ window.addEventListener('scroll', () => {
 
 // CURSED MODE - Trigger when user scrolls to bottom
 let curseDetected = false;
+let audioContext = null;
+let oscillator = null;
 
 window.addEventListener('scroll', () => {
     // Check if user has scrolled to the bottom
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
         if (!curseDetected) {
             curseDetected = true;
-            console.log('%cTHE CURSE HAS BEEN AWAKENED...', 'color: #8b8b6b; font-size: 16px; font-weight: bold;');
+            console.log('%cTHE CURSE HAS BEEN AWAKENED...', 'color: #8b0000; font-size: 18px; font-weight: bold; text-shadow: 0 0 10px red;');
             
-            // Start flickering after 20 seconds
+            // Play creepy sound
+            playCreepySound();
+            
+            // Start flickering after 15 seconds
             setTimeout(() => {
-                startRapidFadeFlickering();
-            }, 20000);
+                startUltraRapidFlickering();
+            }, 15000);
         }
     }
 });
 
-function startRapidFadeFlickering() {
-    document.body.classList.add('fading-flicker');
+function playCreepySound() {
+    try {
+        if (!audioContext) {
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        
+        if (audioContext.state === 'suspended') {
+            audioContext.resume();
+        }
+        
+        // Create creepy low-frequency whisper-like sound
+        oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        
+        // Creepy frequencies (very low)
+        oscillator.frequency.setValueAtTime(30, audioContext.currentTime);
+        oscillator.frequency.exponentialRampToValueAtTime(50, audioContext.currentTime + 2);
+        oscillator.frequency.exponentialRampToValueAtTime(25, audioContext.currentTime + 4);
+        
+        // Volume envelope
+        gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.05, audioContext.currentTime + 4);
+        
+        oscillator.type = 'sine';
+        oscillator.start(audioContext.currentTime);
+        oscillator.stop(audioContext.currentTime + 4);
+    } catch (e) {
+        console.log('Audio not available');
+    }
+}
+
+function startUltraRapidFlickering() {
+    console.log('%cTHE FLICKERING BEGINS...', 'color: #8b0000; font-size: 16px; font-weight: bold;');
     
-    // Flicker for 3 seconds
+    document.body.classList.add('ultra-fading-flicker');
+    
+    // Flicker for 2 seconds (very intense)
     setTimeout(() => {
-        document.body.classList.remove('fading-flicker');
-        activateCursedMode();
-    }, 3000);
+        document.body.classList.remove('ultra-fading-flicker');
+        // Repeat flicker multiple times
+        for (let i = 0; i < 3; i++) {
+            setTimeout(() => {
+                document.body.classList.add('ultra-fading-flicker');
+                setTimeout(() => {
+                    document.body.classList.remove('ultra-fading-flicker');
+                }, 500);
+            }, i * 800);
+        }
+        
+        // After intense flicker sequence, activate cursed mode
+        setTimeout(() => {
+            activateCursedMode();
+        }, 3500);
+    }, 500);
 }
 
 function activateCursedMode() {
     document.body.classList.add('cursed-mode');
     
-    // Change the hero text to cursed version
+    // Change all text to creepy messages
     const heroText = document.querySelector('.hero-text');
     if (heroText) {
-        heroText.textContent = 'This is a totally normal website.';
+        heroText.textContent = 'W H Y   D I D   Y O U   C O M E   H E R E ?';
     }
     
-    console.log('%cTHIS IS A TOTALLY NORMAL WEBSITE', 'color: #8b8b6b; font-size: 18px; font-weight: bold;');
-    console.log('%cYou have entered the cursed realm...', 'color: #8b8b6b; font-size: 14px;');
+    const heroTitle = document.querySelector('.hero-content h1');
+    if (heroTitle) {
+        heroTitle.textContent = 'Y O U   S H O U L D   N O T   B E   H E R E';
+    }
     
-    // Start continuous rapid fade flicker every 3-7 seconds
-    startContinuousRapidFadeFlicker();
+    // Change section titles
+    const sectionTitles = document.querySelectorAll('.about h2, .interests h2, .projects h2');
+    sectionTitles.forEach((title, index) => {
+        const messages = [
+            'T H E Y   A R E   W A T C H I N G',
+            'Y O U   C A N N O T   E S C A P E',
+            'G O   B A C K'
+        ];
+        title.textContent = messages[index] || 'H E L P';
+    });
+    
+    console.log('%cYOU HAVE ENTERED THE CURSED REALM', 'color: #8b0000; font-size: 18px; font-weight: bold;');
+    console.log('%cThey are watching...', 'color: #8b0000; font-size: 14px;');
+    console.log('%cTurn back while you still can...', 'color: #8b0000; font-size: 14px;');
+    
+    // Play more creepy sounds at intervals
+    setInterval(() => {
+        playCreepySound();
+    }, 4000);
+    
+    // Start continuous flickering
+    startContinuousUltraRapidFlicker();
+    
+    // Add disorienting screen shake
+    setInterval(() => {
+        const intensity = Math.random() * 2;
+        document.body.style.transform = `translate(${intensity}px, ${intensity}px)`;
+        setTimeout(() => {
+            document.body.style.transform = 'translate(0, 0)';
+        }, 100);
+    }, 3000);
 }
 
-function startContinuousRapidFadeFlicker() {
+function startContinuousUltraRapidFlicker() {
     setInterval(() => {
-        // Random delay between 3-7 seconds
-        const delay = Math.random() * 4000 + 3000;
-        
-        setTimeout(() => {
-            document.body.classList.add('fading-flicker');
-            
-            // Remove flicker class after animation completes (0.8s animation)
+        // Random flicker at intervals
+        if (Math.random() > 0.7) {
+            document.body.classList.add('ultra-fading-flicker');
             setTimeout(() => {
-                document.body.classList.remove('fading-flicker');
-            }, 800);
-        }, delay);
-    }, 5000); // Run this check every 5 seconds
+                document.body.classList.remove('ultra-fading-flicker');
+            }, 500);
+        }
+    }, 2000);
 }

@@ -42,11 +42,13 @@ body::after {
     z-index: -1;
 }
 
-/* CURSED MODE STYLES */
+/* CURSED MODE STYLES - EXTREMELY SCARY */
 body.cursed-mode {
-    background: #000000 !important;
-    color: #8b8b6b !important;
+    background: #0a0a0a !important;
+    color: #4a4a2a !important;
     font-family: 'Creepster', cursive !important;
+    overflow-x: hidden;
+    text-shadow: 0 0 10px rgba(139, 0, 0, 0.8), 0 0 20px rgba(255, 0, 0, 0.3) !important;
 }
 
 body.cursed-mode::before,
@@ -54,65 +56,200 @@ body.cursed-mode::after {
     display: none !important;
 }
 
+/* CURSED EYES - WATCHING YOU */
+.cursed-eyes {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 9998;
+    pointer-events: none;
+}
+
+body.cursed-mode .cursed-eyes {
+    display: block;
+}
+
+.cursed-eyes::before,
+.cursed-eyes::after {
+    content: '';
+    position: fixed;
+    width: 80px;
+    height: 120px;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(139, 0, 0, 0.6) 50%, #000000);
+    border-radius: 50%;
+    z-index: 9999;
+    box-shadow: inset -10px -10px 20px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 0, 0, 0.4);
+    animation: eyeWatch 3s ease-in-out infinite;
+}
+
+.cursed-eyes::before {
+    top: 15%;
+    left: 10%;
+}
+
+.cursed-eyes::after {
+    top: 15%;
+    right: 10%;
+}
+
+@keyframes eyeWatch {
+    0% {
+        transform: translateY(0px);
+        opacity: 0.7;
+    }
+    50% {
+        transform: translateY(50px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 0.7;
+    }
+}
+
+/* CURSED WHISPER SOUND VISUALIZATION */
+.cursed-whisper {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9997;
+    pointer-events: none;
+}
+
+body.cursed-mode .cursed-whisper {
+    display: block;
+}
+
+.cursed-whisper::before {
+    content: '';
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 0, 0, 0.03) 20%, 
+        rgba(139, 0, 0, 0.02) 40%, 
+        transparent 60%, 
+        rgba(255, 0, 0, 0.03) 80%, 
+        transparent 100%);
+    animation: whisperFlicker 0.15s ease-in-out infinite;
+}
+
+@keyframes whisperFlicker {
+    0%, 100% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 0.3;
+    }
+}
+
 body.cursed-mode .navbar {
     background: #000000 !important;
-    border-bottom-color: #8b8b6b !important;
+    border-bottom: 3px solid #8b0000 !important;
+    box-shadow: 0 0 20px rgba(139, 0, 0, 0.5), inset 0 0 10px rgba(255, 0, 0, 0.2) !important;
 }
 
 body.cursed-mode .logo {
-    color: #8b8b6b !important;
+    color: #4a4a2a !important;
     font-family: 'Creepster', cursive !important;
+    letter-spacing: 3px;
+    text-shadow: 0 0 15px rgba(255, 0, 0, 0.6) !important;
 }
 
 body.cursed-mode .nav-links a {
-    color: #8b8b6b !important;
+    color: #4a4a2a !important;
     font-family: 'Creepster', cursive !important;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5) !important;
 }
 
 body.cursed-mode .nav-links a:hover {
-    color: #8b8b6b !important;
+    color: #8b0000 !important;
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.9) !important;
 }
 
 body.cursed-mode .hero {
     background: #000000 !important;
-    color: #8b8b6b !important;
+    color: #4a4a2a !important;
+    box-shadow: inset 0 0 40px rgba(139, 0, 0, 0.4) !important;
+    border-bottom: 3px solid #8b0000;
 }
 
 body.cursed-mode .hero-content h1 {
-    color: #8b8b6b !important;
+    color: #4a4a2a !important;
     font-family: 'Creepster', cursive !important;
+    letter-spacing: 4px;
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.7), 0 0 40px rgba(139, 0, 0, 0.5) !important;
+    font-size: 3.8rem;
+    font-weight: 900;
 }
 
 body.cursed-mode .hero-content p {
-    color: #8b8b6b !important;
+    color: #4a4a2a !important;
     font-family: 'Creepster', cursive !important;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(255, 0, 0, 0.6) !important;
+}
+
+body.cursed-mode .about,
+body.cursed-mode .interests,
+body.cursed-mode .projects {
+    background: rgba(10, 10, 10, 0.7);
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 3rem auto;
+    box-shadow: inset 0 0 30px rgba(139, 0, 0, 0.3);
 }
 
 body.cursed-mode .about h2,
 body.cursed-mode .interests h2,
 body.cursed-mode .projects h2 {
-    color: #8b8b6b !important;
+    color: #4a4a2a !important;
     font-family: 'Creepster', cursive !important;
+    letter-spacing: 3px;
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.7) !important;
+    font-size: 3rem;
 }
 
 body.cursed-mode .about-content p,
-body.cursed-mode .about-card,
 body.cursed-mode .about-card p,
-body.cursed-mode .interest-card,
 body.cursed-mode .interest-card p,
-body.cursed-mode .project-card,
 body.cursed-mode .project-card p {
-    background: #000000 !important;
-    color: #8b8b6b !important;
-    border-color: #8b8b6b !important;
+    color: #4a4a2a !important;
     font-family: 'Creepster', cursive !important;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5) !important;
+}
+
+body.cursed-mode .about-card,
+body.cursed-mode .interest-card,
+body.cursed-mode .project-card {
+    background: #1a1a1a !important;
+    border: 2px solid #8b0000 !important;
+    box-shadow: 0 0 20px rgba(139, 0, 0, 0.4), inset 0 0 15px rgba(255, 0, 0, 0.1) !important;
+    color: #4a4a2a !important;
+}
+
+body.cursed-mode .about-card:hover,
+body.cursed-mode .interest-card:hover,
+body.cursed-mode .project-card:hover {
+    box-shadow: 0 0 40px rgba(255, 0, 0, 0.6), inset 0 0 25px rgba(139, 0, 0, 0.3) !important;
+    transform: translateY(-8px) scale(1.02) !important;
 }
 
 body.cursed-mode .about-card h3,
 body.cursed-mode .interest-card h3,
 body.cursed-mode .project-card h3 {
-    color: #8b8b6b !important;
+    color: #4a4a2a !important;
     font-family: 'Creepster', cursive !important;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(255, 0, 0, 0.6) !important;
 }
 
 body.cursed-mode .about-card::before,
@@ -123,55 +260,49 @@ body.cursed-mode .project-card::before {
 
 body.cursed-mode .footer {
     background: #000000 !important;
-    color: #8b8b6b !important;
-    border-top-color: #8b8b6b !important;
+    color: #4a4a2a !important;
+    border-top: 3px solid #8b0000 !important;
+    box-shadow: 0 0 20px rgba(139, 0, 0, 0.5) !important;
 }
 
 body.cursed-mode .footer a {
-    color: #8b8b6b !important;
+    color: #4a4a2a !important;
     font-family: 'Creepster', cursive !important;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.6) !important;
 }
 
 body.cursed-mode .footer a:hover {
-    color: #8b8b6b !important;
+    color: #8b0000 !important;
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.9) !important;
 }
 
-/* RAPID FADE FLICKER ANIMATION - like dying battery */
-@keyframes rapidFadeFlicker {
-    0%, 100% {
-        opacity: 1;
-    }
-    10% {
-        opacity: 0.3;
-    }
-    20% {
-        opacity: 1;
-    }
-    30% {
-        opacity: 0.2;
-    }
-    40% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.25;
-    }
-    60% {
-        opacity: 0.9;
-    }
-    70% {
-        opacity: 0.1;
-    }
-    80% {
-        opacity: 1;
-    }
-    90% {
-        opacity: 0.4;
-    }
+/* ULTRA RAPID CHAOTIC FLICKER - SEIZURE WARNING */
+@keyframes ultraRapidFlicker {
+    0% { opacity: 1; }
+    5% { opacity: 0.2; }
+    10% { opacity: 1; }
+    15% { opacity: 0.1; }
+    20% { opacity: 1; }
+    25% { opacity: 0.15; }
+    30% { opacity: 0.95; }
+    35% { opacity: 0.05; }
+    40% { opacity: 1; }
+    45% { opacity: 0.25; }
+    50% { opacity: 0.8; }
+    55% { opacity: 0.08; }
+    60% { opacity: 1; }
+    65% { opacity: 0.3; }
+    70% { opacity: 0.1; }
+    75% { opacity: 1; }
+    80% { opacity: 0.12; }
+    85% { opacity: 0.9; }
+    90% { opacity: 0.05; }
+    95% { opacity: 1; }
+    100% { opacity: 1; }
 }
 
-body.fading-flicker {
-    animation: rapidFadeFlicker 0.8s ease-in-out;
+body.ultra-fading-flicker {
+    animation: ultraRapidFlicker 0.5s ease-in-out;
 }
 
 /* NAVIGATION BAR */

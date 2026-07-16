@@ -71,22 +71,22 @@ window.addEventListener('scroll', () => {
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
         if (!curseDetected) {
             curseDetected = true;
-            console.log('%c⚠️ THE CURSE HAS BEEN AWAKENED...', 'color: #ffff00; font-size: 16px; font-weight: bold;');
+            console.log('%c⚠️ THE CURSE HAS BEEN AWAKENED...', 'color: #b8860b; font-size: 16px; font-weight: bold;');
             
             // Start flickering after 20 seconds
             setTimeout(() => {
-                startFlickering();
+                startFadeFlickering();
             }, 20000);
         }
     }
 });
 
-function startFlickering() {
-    document.body.classList.add('flickering');
+function startFadeFlickering() {
+    document.body.classList.add('fading-flicker');
     
     // Flicker for 3 seconds
     setTimeout(() => {
-        document.body.classList.remove('flickering');
+        document.body.classList.remove('fading-flicker');
         activateCursedMode();
     }, 3000);
 }
@@ -100,6 +100,25 @@ function activateCursedMode() {
         heroText.textContent = 'This is a totally normal website.';
     }
     
-    console.log('%c👁️ THIS IS A TOTALLY NORMAL WEBSITE 👁️', 'color: #ffff00; font-size: 18px; font-weight: bold;');
-    console.log('%cYou have entered the cursed realm...', 'color: #ffff00; font-size: 14px;');
+    console.log('%cTHIS IS A TOTALLY NORMAL WEBSITE', 'color: #b8860b; font-size: 18px; font-weight: bold;');
+    console.log('%cYou have entered the cursed realm...', 'color: #b8860b; font-size: 14px;');
+    
+    // Start continuous fade flicker every 5-10 seconds
+    startContinuousFadeFlicker();
+}
+
+function startContinuousFadeFlicker() {
+    setInterval(() => {
+        // Random delay between 5-10 seconds
+        const delay = Math.random() * 5000 + 5000;
+        
+        setTimeout(() => {
+            document.body.classList.add('fading-flicker');
+            
+            // Remove flicker class after animation completes
+            setTimeout(() => {
+                document.body.classList.remove('fading-flicker');
+            }, 2000);
+        }, delay);
+    }, 7000); // Run this check every 7 seconds
 }

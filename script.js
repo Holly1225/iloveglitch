@@ -16,6 +16,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 console.log('%cWelcome to Holly\'s Website!', 'color: #d87093; font-size: 20px; font-weight: bold;');
 console.log('%cWebsite about me and other fun stuff haha yeah :D', 'color: #b78dd9; font-size: 14px;');
 console.log('%cCheck out my GitHub: github.com/Holly1225/iloveglitch', 'color: #7c6b8d; font-size: 12px;');
+console.log('Character Cards section updated to: Other stuff: I do random crafts I find on the internet with stuff I have at home. (basically DIY ig)');
 
 // ADD ANIMATION when sections come into view
 const observerOptions = {

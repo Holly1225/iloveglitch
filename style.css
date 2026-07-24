@@ -513,6 +513,7 @@ body.ultra-fading-flicker {
     gap: 2.5rem;
 }
 
+/* Project cards (includes Tiny Mini House, Other stuff, This Website) */
 .project-card {
     background: linear-gradient(135deg, #fff7ed 0%, #fce7f3 50%, #f0f9ff 100%);
     padding: 2rem;

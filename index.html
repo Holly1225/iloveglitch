@@ -14,7 +14,6 @@
     </style>
 </head>
 <body>
-    <!-- NAVIGATION BAR -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="#home" class="logo">Holly</a>
@@ -28,7 +27,6 @@
         </div>
     </nav>
 
-    <!-- HOME SECTION -->
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Hello, I'm Holly</h1>
@@ -37,7 +35,6 @@
         </div>
     </section>
 
-    <!-- ABOUT ME SECTION -->
     <section id="about" class="about">
         <h2>About Me</h2>
         <div class="about-content">
@@ -64,7 +61,6 @@
         </div>
     </section>
 
-    <!-- INTERESTS SECTION -->
     <section id="interests" class="interests">
         <h2>My Interests</h2>
         
@@ -106,7 +102,6 @@
         </div>
     </section>
 
-    <!-- PROJECTS SECTION -->
     <section id="projects" class="projects">
         <h2>My Projects</h2>
         
@@ -128,68 +123,14 @@
         </div>
     </section>
 
-    <!-- PHOTO GALLERY SECTION -->
     <section id="photogallery" class="projects">
         <h2>Photo Gallery</h2>
-
-        <button id="galleryToggle" class="gallery-toggle-card" aria-expanded="false" aria-controls="galleryContent">
-            Photo Gallery
-            <span class="gallery-toggle-hint">Click to open</span>
-        </button>
-
-        <div id="galleryContent" class="gallery-content is-hidden">
-            <div class="projects-grid gallery-grid">
-                <div class="project-card gallery-card">
-                    <h3>University of Washington Stuff</h3>
-                    <img class="gallery-image" src="IMG_3888.jpeg" alt="University of Washington Stuff 1">
-                    <img class="gallery-image" src="IMG_3901.jpeg" alt="University of Washington Stuff 2">
-                </div>
-
-                <div class="project-card gallery-card">
-                    <h3>UW Golf Varsity</h3>
-                    <img class="gallery-image" src="IMG_4255.jpeg" alt="UW Golf Varsity">
-                </div>
-
-                <div class="project-card gallery-card">
-                    <h3>Amazon dome in Seattle</h3>
-                    <img class="gallery-image" src="IMG_4421.jpeg" alt="Amazon dome in Seattle">
-                </div>
-
-                <div class="project-card gallery-card">
-                    <h3>Duolingo :D</h3>
-                    <img class="gallery-image" src="IMG_4887.png" alt="Duolingo">
-                </div>
-
-                <div class="project-card gallery-card">
-                    <h3>Golf game</h3>
-                    <img class="gallery-image" src="IMG_4919.jpeg" alt="Golf game">
-                </div>
-
-                <div class="project-card gallery-card">
-                    <h3>It tasted good</h3>
-                    <img class="gallery-image" src="IMG_4963.jpeg" alt="It tasted good">
-                </div>
-
-                <div class="project-card gallery-card">
-                    <h3>Close-up of Moon</h3>
-                    <img class="gallery-image" src="IMG_5333.jpeg" alt="Close-up of Moon">
-                </div>
-
-                <div class="project-card gallery-card">
-                    <h3>More Photos</h3>
-                    <img class="gallery-image" src="IMG_5248.jpeg" alt="Gallery image 1">
-                    <img class="gallery-image" src="IMG_4645.jpeg" alt="Gallery image 2">
-                </div>
-            </div>
-        </div>
+        <a class="gallery-toggle-card gallery-link-card" href="gallery.html" aria-label="Open photo gallery page">
+            <span>Photo Gallery</span>
+            <span class="gallery-toggle-hint">Click to open gallery page</span>
+        </a>
     </section>
 
-    <div id="lightbox" class="lightbox" aria-hidden="true">
-        <button id="lightboxClose" class="lightbox-close" aria-label="Close full size image">×</button>
-        <img id="lightboxImage" class="lightbox-image" src="" alt="Full size preview">
-    </div>
-
-    <!-- FOOTER -->
     <footer class="footer">
         <p>Made by Holly / Check out my <a href="https://github.com/Holly1225/iloveglitch" target="_blank">GitHub</a></p>
     </footer>

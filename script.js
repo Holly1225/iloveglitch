@@ -189,3 +189,63 @@ function startContinuousUltraRapidFlicker() {
         }
     }, 2000);
 }
+
+// GALLERY OVERLAY + LIGHTBOX
+const openGalleryOverlayBtn = document.getElementById('openGalleryOverlay');
+const galleryOverlay = document.getElementById('galleryOverlay');
+const closeGalleryOverlayBtn = document.getElementById('closeGalleryOverlay');
+
+function openGalleryOverlay() {
+    if (!galleryOverlay) return;
+    galleryOverlay.classList.add('open');
+    galleryOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeGalleryOverlay() {
+    if (!galleryOverlay) return;
+    galleryOverlay.classList.remove('open');
+    galleryOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+}
+
+if (openGalleryOverlayBtn) openGalleryOverlayBtn.addEventListener('click', openGalleryOverlay);
+if (closeGalleryOverlayBtn) closeGalleryOverlayBtn.addEventListener('click', closeGalleryOverlay);
+
+const lightbox = document.getElementById('lightbox');
+const lightboxImage = document.getElementById('lightboxImage');
+const lightboxClose = document.getElementById('lightboxClose');
+
+document.querySelectorAll('.gallery-image').forEach(img => {
+    img.addEventListener('click', () => {
+        if (!lightbox || !lightboxImage) return;
+        lightboxImage.src = img.src;
+        lightboxImage.alt = img.alt || 'Full size photo';
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden', 'false');
+    });
+});
+
+function closeLightbox() {
+    if (!lightbox || !lightboxImage) return;
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    lightboxImage.src = '';
+}
+
+if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+if (lightbox) {
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+    });
+}
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        if (lightbox && lightbox.classList.contains('open')) {
+            closeLightbox();
+        } else if (galleryOverlay && galleryOverlay.classList.contains('open')) {
+            closeGalleryOverlay();
+        }
+    }
+});

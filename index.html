@@ -40,7 +40,7 @@
         <div class="about-content">
             <p>I'm an 8th grader who likes music, golf, and making things. I play piano and violin, compete in golf tournaments, and I'm usually working on something.</p>
         </div>
-        
+
         <div class="about-grid">
             <div class="about-card">
                 <h3>Academics</h3>
@@ -63,7 +63,7 @@
 
     <section id="interests" class="interests">
         <h2>My Interests</h2>
-        
+
         <div class="interests-grid">
             <div class="interest-card">
                 <h3>Music I Listen To</h3>
@@ -99,12 +99,17 @@
                 <h3>Horror Content</h3>
                 <p>I like horror too. My favorite is analog horror or backrooms horror. My favorite creator of analog horror is Doctor Nowhere from YouTube. :D</p>
             </div>
+
+            <div class="interest-card">
+                <h3>Gambling?</h3>
+                <p>I like to buy figurines and stuff to collect and gamble. Usually stuff form popmart? They're worth it though because most of them are pretty or cute.</p>
+            </div>
         </div>
     </section>
 
     <section id="projects" class="projects">
         <h2>My Projects</h2>
-        
+
         <div class="projects-grid">
             <div class="project-card">
                 <h3>Tiny Mini House</h3>
@@ -125,11 +130,83 @@
 
     <section id="photogallery" class="projects">
         <h2>Photo Gallery</h2>
-        <a class="gallery-toggle-card gallery-link-card" href="gallery.html" aria-label="Open photo gallery page">
-            <span>Photo Gallery</span>
-            <span class="gallery-toggle-hint">Click to open gallery page</span>
-        </a>
+        <p class="gallery-intro">A little collection of photos I like. Click any picture to see it bigger. :D</p>
+
+        <div class="gallery-group">
+            <h3 class="gallery-group-title">University of Washington Stuff</h3>
+            <div class="gallery-grid">
+                <button class="gallery-item" type="button"><img class="gallery-image" src="IMG_3888.jpeg" alt="University of Washington" loading="lazy"></button>
+                <button class="gallery-item" type="button"><img class="gallery-image" src="IMG_3901.jpeg" alt="University of Washington" loading="lazy"></button>
+            </div>
+        </div>
+
+        <div class="gallery-group">
+            <h3 class="gallery-group-title">UW Golf Varsity</h3>
+            <div class="gallery-grid">
+                <button class="gallery-item" type="button"><img class="gallery-image" src="IMG_4255.jpeg" alt="UW Golf Varsity" loading="lazy"></button>
+            </div>
+        </div>
+
+        <div class="gallery-group">
+            <h3 class="gallery-group-title">Amazon dome in Seattle</h3>
+            <div class="gallery-grid">
+                <button class="gallery-item" type="button"><img class="gallery-image" src="IMG_4421.jpeg" alt="Amazon dome in Seattle" loading="lazy"></button>
+            </div>
+        </div>
+
+        <div class="gallery-group">
+            <h3 class="gallery-group-title">Duolingo :D</h3>
+            <div class="gallery-grid">
+                <button class="gallery-item" type="button"><img class="gallery-image" src="IMG_4887.png" alt="Duolingo" loading="lazy"></button>
+            </div>
+        </div>
+
+        <div class="gallery-group">
+            <h3 class="gallery-group-title">Golf game</h3>
+            <div class="gallery-grid">
+                <button class="gallery-item" type="button"><img class="gallery-image" src="IMG_4919.jpeg" alt="Golf game" loading="lazy"></button>
+            </div>
+        </div>
+
+        <div class="gallery-group">
+            <h3 class="gallery-group-title">It tasted good</h3>
+            <div class="gallery-grid">
+                <button class="gallery-item" type="button"><img class="gallery-image" src="IMG_4963.jpeg" alt="It tasted good" loading="lazy"></button>
+            </div>
+        </div>
+
+        <div class="gallery-group">
+            <h3 class="gallery-group-title">Close-up of Moon</h3>
+            <div class="gallery-grid">
+                <button class="gallery-item" type="button"><img class="gallery-image" src="IMG_5333.jpeg" alt="Close-up of Moon" loading="lazy"></button>
+            </div>
+        </div>
+
+        <div class="gallery-group">
+            <h3 class="gallery-group-title">Gambling Stuff</h3>
+            <div class="gallery-grid">
+                <button class="gallery-item" type="button"><img class="gallery-image" src="IMG_gambling1.jpeg" alt="Popmart plush dolls" loading="lazy"></button>
+                <button class="gallery-item" type="button"><img class="gallery-image" src="IMG_gambling2.jpeg" alt="Popmart figurine" loading="lazy"></button>
+                <button class="gallery-item" type="button"><img class="gallery-image" src="IMG_gambling3.jpeg" alt="My figurine collection shelf" loading="lazy"></button>
+            </div>
+        </div>
+
+        <div class="gallery-group">
+            <div class="gallery-grid">
+                <button class="gallery-item" type="button"><img class="gallery-image" src="IMG_5248.jpeg" alt="Photo" loading="lazy"></button>
+                <button class="gallery-item" type="button"><img class="gallery-image" src="IMG_4645.jpeg" alt="Photo" loading="lazy"></button>
+            </div>
+        </div>
     </section>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Photo viewer">
+        <button class="lightbox-btn lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+        <button class="lightbox-btn lightbox-prev" id="lightboxPrev" aria-label="Previous photo">&#8249;</button>
+        <img id="lightboxImage" src="" alt="">
+        <button class="lightbox-btn lightbox-next" id="lightboxNext" aria-label="Next photo">&#8250;</button>
+        <div class="lightbox-counter" id="lightboxCounter"></div>
+    </div>
 
     <footer class="footer">
         <p>Made by Holly / Check out my <a href="https://github.com/Holly1225/iloveglitch" target="_blank">GitHub</a></p>

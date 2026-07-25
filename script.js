@@ -43,7 +43,7 @@ document.querySelectorAll('section').forEach(section => {
 // HIGHLIGHT active nav link based on scroll position
 window.addEventListener('scroll', () => {
     let current = '';
-    
+
     document.querySelectorAll('section').forEach(section => {
         const sectionTop = section.offsetTop;
         if (scrollY >= sectionTop - 200) {
@@ -72,10 +72,10 @@ window.addEventListener('scroll', () => {
         if (!curseDetected) {
             curseDetected = true;
             console.log('%cTHE CURSE HAS BEEN AWAKENED...', 'color: #8b0000; font-size: 18px; font-weight: bold; text-shadow: 0 0 10px red;');
-            
+
             // Play creepy sound
             playCreepySound();
-            
+
             // Start flickering after 15 seconds
             setTimeout(() => {
                 startUltraRapidFlickering();
@@ -89,24 +89,24 @@ function playCreepySound() {
         if (!audioContext) {
             audioContext = new (window.AudioContext || window.webkitAudioContext)();
         }
-        
+
         if (audioContext.state === 'suspended') {
             audioContext.resume();
         }
-        
+
         oscillator = audioContext.createOscillator();
         const gainNode = audioContext.createGain();
-        
+
         oscillator.connect(gainNode);
         gainNode.connect(audioContext.destination);
-        
+
         oscillator.frequency.setValueAtTime(30, audioContext.currentTime);
         oscillator.frequency.exponentialRampToValueAtTime(50, audioContext.currentTime + 2);
         oscillator.frequency.exponentialRampToValueAtTime(25, audioContext.currentTime + 4);
-        
+
         gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
         gainNode.gain.exponentialRampToValueAtTime(0.05, audioContext.currentTime + 4);
-        
+
         oscillator.type = 'sine';
         oscillator.start(audioContext.currentTime);
         oscillator.stop(audioContext.currentTime + 4);
@@ -117,9 +117,9 @@ function playCreepySound() {
 
 function startUltraRapidFlickering() {
     console.log('%cTHE FLICKERING BEGINS...', 'color: #8b0000; font-size: 16px; font-weight: bold;');
-    
+
     document.body.classList.add('ultra-fading-flicker');
-    
+
     setTimeout(() => {
         document.body.classList.remove('ultra-fading-flicker');
         for (let i = 0; i < 3; i++) {
@@ -130,7 +130,7 @@ function startUltraRapidFlickering() {
                 }, 500);
             }, i * 800);
         }
-        
+
         setTimeout(() => {
             activateCursedMode();
         }, 3500);
@@ -139,17 +139,17 @@ function startUltraRapidFlickering() {
 
 function activateCursedMode() {
     document.body.classList.add('cursed-mode');
-    
+
     const heroText = document.querySelector('.hero-text');
     if (heroText) {
         heroText.textContent = 'Fun Stuff :D';
     }
-    
+
     const heroTitle = document.querySelector('.hero-content h1');
     if (heroTitle) {
         heroTitle.textContent = 'Hello again!';
     }
-    
+
     const sectionTitles = document.querySelectorAll('.about h2, .interests h2, .projects h2');
     sectionTitles.forEach((title, index) => {
         const messages = [
@@ -159,17 +159,17 @@ function activateCursedMode() {
         ];
         title.textContent = messages[index] || title.textContent;
     });
-    
+
     console.log('%cYOU HAVE ENTERED THE CURSED REALM', 'color: #8b0000; font-size: 18px; font-weight: bold;');
     console.log('%cThey are watching...', 'color: #8b0000; font-size: 14px;');
     console.log('%cTurn back while you still can...', 'color: #8b0000; font-size: 14px;');
-    
+
     setInterval(() => {
         playCreepySound();
     }, 4000);
-    
+
     startContinuousUltraRapidFlicker();
-    
+
     setInterval(() => {
         const intensity = Math.random() * 2;
         document.body.style.transform = `translate(${intensity}px, ${intensity}px)`;
@@ -190,62 +190,57 @@ function startContinuousUltraRapidFlicker() {
     }, 2000);
 }
 
-// GALLERY OVERLAY + LIGHTBOX
-const openGalleryOverlayBtn = document.getElementById('openGalleryOverlay');
-const galleryOverlay = document.getElementById('galleryOverlay');
-const closeGalleryOverlayBtn = document.getElementById('closeGalleryOverlay');
+// PHOTO GALLERY LIGHTBOX (click to enlarge, with prev/next, counter, keyboard nav)
+(function () {
+    const images = Array.from(document.querySelectorAll('.gallery-image'));
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    if (!images.length || !lightbox || !lightboxImage) return;
 
-function openGalleryOverlay() {
-    if (!galleryOverlay) return;
-    galleryOverlay.classList.add('open');
-    galleryOverlay.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-}
+    const counter = document.getElementById('lightboxCounter');
+    const btnClose = document.getElementById('lightboxClose');
+    const btnPrev = document.getElementById('lightboxPrev');
+    const btnNext = document.getElementById('lightboxNext');
+    let current = 0;
 
-function closeGalleryOverlay() {
-    if (!galleryOverlay) return;
-    galleryOverlay.classList.remove('open');
-    galleryOverlay.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-}
-
-if (openGalleryOverlayBtn) openGalleryOverlayBtn.addEventListener('click', openGalleryOverlay);
-if (closeGalleryOverlayBtn) closeGalleryOverlayBtn.addEventListener('click', closeGalleryOverlay);
-
-const lightbox = document.getElementById('lightbox');
-const lightboxImage = document.getElementById('lightboxImage');
-const lightboxClose = document.getElementById('lightboxClose');
-
-document.querySelectorAll('.gallery-image').forEach(img => {
-    img.addEventListener('click', () => {
-        if (!lightbox || !lightboxImage) return;
+    function show(index) {
+        current = (index + images.length) % images.length;
+        const img = images[current];
         lightboxImage.src = img.src;
         lightboxImage.alt = img.alt || 'Full size photo';
+        if (counter) counter.textContent = (current + 1) + ' / ' + images.length;
+    }
+
+    function openLightbox(index) {
+        show(index);
         lightbox.classList.add('open');
         lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        lightboxImage.src = '';
+        document.body.style.overflow = '';
+    }
+
+    images.forEach((img, i) => {
+        img.parentElement.addEventListener('click', () => openLightbox(i));
     });
-});
 
-function closeLightbox() {
-    if (!lightbox || !lightboxImage) return;
-    lightbox.classList.remove('open');
-    lightbox.setAttribute('aria-hidden', 'true');
-    lightboxImage.src = '';
-}
+    if (btnClose) btnClose.addEventListener('click', closeLightbox);
+    if (btnNext) btnNext.addEventListener('click', () => show(current + 1));
+    if (btnPrev) btnPrev.addEventListener('click', () => show(current - 1));
 
-if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
-if (lightbox) {
     lightbox.addEventListener('click', (e) => {
         if (e.target === lightbox) closeLightbox();
     });
-}
 
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        if (lightbox && lightbox.classList.contains('open')) {
-            closeLightbox();
-        } else if (galleryOverlay && galleryOverlay.classList.contains('open')) {
-            closeGalleryOverlay();
-        }
-    }
-});
+    document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('open')) return;
+        if (e.key === 'Escape') closeLightbox();
+        else if (e.key === 'ArrowRight') show(current + 1);
+        else if (e.key === 'ArrowLeft') show(current - 1);
+    });
+})();

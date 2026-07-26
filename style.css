@@ -826,3 +826,28 @@ body.ultra-fading-flicker {
         font-size: 0.9rem;
     }
 }
+/* ===== GIFs INSIDE CARDS ===== */
+.card-gif {
+    display: block;
+    width: 130px;
+    height: auto;
+    margin: 1.2rem auto 0;
+    border-radius: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+/* row for cards that hold two gifs (Shows and Gaming) */
+.card-gif-row {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 1.2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.card-gif-row .card-gif {
+    width: 110px;
+    margin: 0;
+}

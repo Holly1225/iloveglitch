@@ -66,6 +66,7 @@ window.addEventListener('scroll', () => {
 let curseDetected = false;
 let audioContext = null;
 let oscillator = null;
+let lightboxIsOpen = false; // when true, pause the cursed-mode shake so fullscreen can center correctly
 
 window.addEventListener('scroll', () => {
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
@@ -171,9 +172,11 @@ function activateCursedMode() {
     startContinuousUltraRapidFlicker();
 
     setInterval(() => {
+        if (lightboxIsOpen) return; // don't shake while a photo is open fullscreen
         const intensity = Math.random() * 2;
         document.body.style.transform = `translate(${intensity}px, ${intensity}px)`;
         setTimeout(() => {
+            if (lightboxIsOpen) return;
             document.body.style.transform = 'translate(0, 0)';
         }, 100);
     }, 3000);
@@ -216,6 +219,9 @@ function startContinuousUltraRapidFlicker() {
         lightbox.classList.add('open');
         lightbox.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
+        // Pause the cursed-mode shake and clear its transform so the popup centers on the screen
+        lightboxIsOpen = true;
+        document.body.style.transform = 'none';
     }
 
     function closeLightbox() {
@@ -223,6 +229,8 @@ function startContinuousUltraRapidFlicker() {
         lightbox.setAttribute('aria-hidden', 'true');
         lightboxImage.src = '';
         document.body.style.overflow = '';
+        // Let the cursed-mode shake resume
+        lightboxIsOpen = false;
     }
 
     images.forEach((img, i) => {
